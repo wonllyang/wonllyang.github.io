@@ -1,56 +1,303 @@
-<!DOCTYPE HTML>
-<!--
-	Aerial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>简创编程</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<div id="wrapper">
-			<div id="bg"></div>
-			<div id="overlay"></div>
-			<div id="main">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="程序员个人主页">
+    <meta name="keywords" content="程序员,前端,后端,全栈开发">
+    <meta name="author" content="码农">
+    <title>码农的个人主页</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css');
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .tech-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .tech-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold">码</span>
+                    </div>
+                    <h1 class="text-xl font-bold text-gray-800">码农的世界</h1>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#about" class="text-gray-600 hover:text-purple-600 transition duration-300">关于我</a>
+                    <a href="#skills" class="text-gray-600 hover:text-purple-600 transition duration-300">技能</a>
+                    <a href="#contact" class="text-gray-600 hover:text-purple-600 transition duration-300">联系</a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-				<!-- Header -->
-					<header id="header">
-						<h1>简创编程</h1>
-						<p>面向未来 &nbsp;&bull;&nbsp; 成就人生 &nbsp;&bull;&nbsp; 快乐学习</p>
-						<!-- 添加图片 -->
-<!-- 						<img src="cello.jpg" alt="Example Image"> -->
-						<nav>
-							<ul>
-								<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-								<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-								<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-							</ul>
-						</nav>
-					</header>
+    <!-- 主要内容 -->
+    <main class="pt-16">
+        <!-- Hero 区域 -->
+        <section class="gradient-bg min-h-screen flex items-center justify-center text-white">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <div class="floating mb-8">
+                    <div class="w-32 h-32 mx-auto bg-white rounded-full flex items-center justify-center mb-6">
+                        <span class="text-4xl">👨‍💻</span>
+                    </div>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-4">
+                    Hello, 我是<span class="typewriter">码农</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">
+                    专业写bug十年，修bug靠运气的全栈开发者
+                </p>
+                <button onclick="scrollToSection('about')" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                    了解更多
+                </button>
+            </div>
+        </section>
 
-					<audio autoplay loop>
-  						<source src="background_music.mp3" type="audio/mpeg">
-  						My AI mp3.
-					</audio>
+        <!-- 关于我 -->
+        <section id="about" class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">关于我</h2>
+                    <div class="w-20 h-1 bg-purple-600 mx-auto"></div>
+                </div>
+                
+                <div class="card-hover bg-gray-50 rounded-2xl p-8 shadow-lg">
+                    <div class="text-lg leading-relaxed text-gray-700">
+                        <p class="mb-4">大家好，我是一个码农，专业写bug十年，修bug靠运气。会的语言挺多：HTML（这算语言吗？），CSS（调半天颜色），JavaScript（异步能把我绕晕），C/C++（指针是我永远的痛），Java（Hello World专家），C#（微软真香），PHP（世界上最好的语言，不接受反驳）。</p>
+                        
+                        <p class="mb-4">框架也玩过不少：React.js（钩子钩到我头秃），Next.js（SSR让我怀疑人生），还有各种UI库Ant Design、Hero UI、Tailwind CSS（class名字记不住）。</p>
+                        
+                        <p>虽然技术栈看起来很丰富，但其实都是半桶水，遇到bug还是得靠百度和Stack Overflow。欢迎各位大佬多多指教，菜鸡在此拜谢！ 🙏</p>
+                    </div>
+                </div>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<span class="copyright">&copy; Mini Originate. Design: <a href="http://html5up.net">HTML5 UP</a>.</span>
-					</footer>
+                <div class="grid md:grid-cols-3 gap-6 mt-12">
+                    <div class="card-hover bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl p-6 text-white text-center">
+                        <div class="text-3xl mb-2">🐛</div>
+                        <h3 class="text-xl font-semibold mb-2">写Bug专家</h3>
+                        <p class="opacity-90">十年经验，bug写得比代码还多</p>
+                    </div>
+                    <div class="card-hover bg-gradient-to-br from-green-400 to-green-600 rounded-xl p-6 text-white text-center">
+                        <div class="text-3xl mb-2">🔍</div>
+                        <h3 class="text-xl font-semibold mb-2">调试大师</h3>
+                        <p class="opacity-90">console.log() 是我最好的朋友</p>
+                    </div>
+                    <div class="card-hover bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl p-6 text-white text-center">
+                        <div class="text-3xl mb-2">☕</div>
+                        <h3 class="text-xl font-semibold mb-2">咖啡驱动</h3>
+                        <p class="opacity-90">没有咖啡就没有代码</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-			</div>
-		</div>
-		<script>
-			window.onload = function() { document.body.classList.remove('is-preload'); }
-			window.ontouchmove = function() { return false; }
-			window.onorientationchange = function() { document.body.scrollTop = 0; }
-		</script>
-	</body>
+        <!-- 技能展示 -->
+        <section id="skills" class="py-20 bg-gray-100">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">技术栈</h2>
+                    <div class="w-20 h-1 bg-purple-600 mx-auto mb-4"></div>
+                    <p class="text-gray-600">半桶水的技术栈展示</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <div class="tech-badge bg-white rounded-lg p-4 text-center shadow-md">
+                        <div class="text-2xl mb-2">🌐</div>
+                        <span class="text-sm font-medium">HTML</span>
+                    </div>
+                    <div class="tech-badge bg-white rounded-lg p-4 text-center shadow-md">
+                        <div class="text-2xl mb-2">🎨</div>
+                        <span class="text-sm font-medium">CSS</span>
+                    </div>
+                    <div class="tech-badge bg-white rounded-lg p-4 text-center shadow-md">
+                        <div class="text-2xl mb-2">⚡</div>
+                        <span class="text-sm font-medium">JavaScript</span>
+                    </div>
+                    <div class="tech-badge bg-white rounded-lg p-4 text-center shadow-md">
+                        <div class="text-2xl mb-2">🔧</div>
+                        <span class="text-sm font-medium">C/C++</span>
+                    </div>
+                    <div class="tech-badge bg-white rounded-lg p-4 text-center shadow-md">
+                        <div class="text-2xl mb-2">☕</div>
+                        <span class="text-sm font-medium">Java</span>
+                    </div>
+                    <div class="tech-badge bg-white rounded-lg p-4 text-center shadow-md">
+                        <div class="text-2xl mb-2">💎</div>
+                        <span class="text-sm font-medium">C#</span>
+                    </div>
+                    <div class="tech-badge bg-white rounded-lg p-4 text-center shadow-md">
+                        <div class="text-2xl mb-2">🐘</div>
+                        <span class="text-sm font-medium">PHP</span>
+                    </div>
+                    <div class="tech-badge bg-white rounded-lg p-4 text-center shadow-md">
+                        <div class="text-2xl mb-2">⚛️</div>
+                        <span class="text-sm font-medium">React.js</span>
+                    </div>
+                    <div class="tech-badge bg-white rounded-lg p-4 text-center shadow-md">
+                        <div class="text-2xl mb-2">🚀</div>
+                        <span class="text-sm font-medium">Next.js</span>
+                    </div>
+                    <div class="tech-badge bg-white rounded-lg p-4 text-center shadow-md">
+                        <div class="text-2xl mb-2">🐜</div>
+                        <span class="text-sm font-medium">Ant Design</span>
+                    </div>
+                    <div class="tech-badge bg-white rounded-lg p-4 text-center shadow-md">
+                        <div class="text-2xl mb-2">🎭</div>
+                        <span class="text-sm font-medium">Hero UI</span>
+                    </div>
+                    <div class="tech-badge bg-white rounded-lg p-4 text-center shadow-md">
+                        <div class="text-2xl mb-2">💨</div>
+                        <span class="text-sm font-medium">Tailwind</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系方式 -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">联系我</h2>
+                <div class="w-20 h-1 bg-purple-600 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 mb-8">虽然是菜鸡，但欢迎大佬们指教！</p>
+                
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="card-hover bg-blue-500 text-white p-4 rounded-full hover:bg-blue-600 transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="card-hover bg-gray-800 text-white p-4 rounded-full hover:bg-gray-900 transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="card-hover bg-green-500 text-white p-4 rounded-full hover:bg-green-600 transition duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p>&copy; 2025 码农的世界. 专业写bug，业余修bug.</p>
+            <p class="mt-2 text-gray-400">Built with ❤️ and lots of ☕</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white', 'shadow-lg');
+            } else {
+                nav.classList.add('bg-white', 'shadow-lg');
+            }
+        });
+
+        // 移动端菜单
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            // 这里可以添加移动端菜单的显示/隐藏逻辑
+            alert('移动端菜单功能待开发 😅');
+        });
+
+        // 技能卡片点击效果
+        document.querySelectorAll('.tech-badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                const skill = this.querySelector('span').textContent;
+                const messages = {
+                    'HTML': '这算语言吗？🤔',
+                    'CSS': '调半天颜色，结果还是不对 😭',
+                    'JavaScript': '异步能把我绕晕 🌀',
+                    'C/C++': '指针是我永远的痛 💀',
+                    'Java': 'Hello World专家 ☕',
+                    'C#': '微软真香 💎',
+                    'PHP': '世界上最好的语言！🐘',
+                    'React.js': '钩子钩到我头秃 ⚛️',
+                    'Next.js': 'SSR让我怀疑人生 🚀',
+                    'Ant Design': 'UI组件救星 🐜',
+                    'Hero UI': '英雄般的UI框架 🎭',
+                    'Tailwind': 'class名字记不住 💨'
+                };
+                alert(messages[skill] || '这个我也不太熟 😅');
+            });
+        });
+
+        // 页面加载完成后的小彩蛋
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                console.log('欢迎来到码农的世界！🎉');
+                console.log('发现了隐藏的彩蛋！你也是程序员吧？😎');
+                console.log('如果你看到了这条消息，说明你打开了开发者工具！');
+                console.log('我们是同道中人！🤝');
+            }, 2000);
+        });
+    </script>
+</body>
 </html>
